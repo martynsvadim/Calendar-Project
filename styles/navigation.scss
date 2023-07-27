@@ -1,0 +1,15 @@
+// стили навигации
+
+.header {
+  display: flex;
+  margin-top: 10px;
+  margin-left: 100px;
+}
+
+.create-event-btn {
+  margin-right: 30px;
+
+  &__icon {
+    padding-right: 10px;
+  }
+}
