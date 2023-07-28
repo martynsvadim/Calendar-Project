@@ -7,13 +7,13 @@ const generateDay = () => {
   // функция должна сгенерировать и вернуть разметку дня в виде строки
   // разметка состоит из 24 часовых временных слотов (.calendar__time-slot)
   const timeScale = document.querySelector('.calendar__time-scale');
-  for (let i = 0; i < 24; i++) {
-    const divElem = document.createElement('div');
-    const spanElem = document.createElement('span');
-    spanElem.classList.add('time-slot__time');
-    divElem.classList.add('time-slot');
-    timeScale.append(divElem);
-  }
+  const timeSlot = createNumbersArray(1, 24)
+    .map(
+      (timeElem) =>
+        `<div class = "time-slot"><span class="time-slot__time" data-time-number = ${timeElem}>${timeElem}${':00'}</span></div>`
+    )
+    .join('');
+  timeScale.innerHTML = timeSlot;
 };
 generateDay();
 
