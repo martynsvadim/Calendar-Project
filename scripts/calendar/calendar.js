@@ -23,4 +23,25 @@ export const renderWeek = () => {
   // массив дней, которые нужно отобразить, считаем ф-цией generateWeekRange на основе displayedWeekStart из storage
   // каждый день должен содержать в дата атрибуте порядковый номер дня в месяце
   // после того, как отрисовали всю сетку для отображаемой недели, нужно отобразить события этой недели с помощью renderEvents
+  const calendarWeek = document.querySelector('.calendar__week');
+  const mondayDate = getItem('displayedWeekStart');
+
+  const week = generateWeekRange(mondayDate)
+    .map(
+      (elem) => `<div class="calendar__day" data-day = ${elem.getDate()}></div>`
+    )
+    .join('');
+
+  calendarWeek.innerHTML = week;
+
+  const calendarDay = document.querySelectorAll('.calendar__day');
+
+  const dayTimeSlot = createNumbersArray(1, 24)
+    .map(
+      (time) => `<div class="calendar__time-slot" data-time = ${time}></div>`
+    )
+    .join('');
+
+  calendarDay.forEach((dayElem) => (dayElem.innerHTML = dayTimeSlot));
 };
+renderWeek();

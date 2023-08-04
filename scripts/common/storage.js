@@ -1,3 +1,5 @@
+import { getStartOfWeek } from '../common/time.utils.js';
+
 let storage = {
   // используется для удаления события
   eventIdToDelete: null,
@@ -10,12 +12,15 @@ let storage = {
 
 export const setItem = (key, value) => {
   // ф-ция должна устанавливать значения в объект storage
+  storage[key] = value;
 };
+setItem('displayedWeekStart', getStartOfWeek(new Date()));
 
 export const getItem = (key) => {
   // ф-ция должна возвращать по ключу значения из объекта storage
+  return storage[key];
 };
-
+console.log(getItem('displayedWeekStart'));
 // пример объекта события
 const eventExample = {
   id: 0.7520027086457333, // id понадобится для работы с событиями
