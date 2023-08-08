@@ -17,7 +17,7 @@ export const renderHeader = () => {
       (elem) =>
         `<div class="calendar__day-label"><span class="day-label__day-name">${
           daysOfWeek[elem.getDay()]
-        } <n> </span><span class="day-label__day-number">${elem.getDate()}</span></div>`
+        } </span><span class="day-label__day-number">${elem.getDate()}</span></div>`
     )
     .join('');
   calendarHeader.innerHTML = headerWeek;
@@ -26,3 +26,6 @@ renderHeader();
 
 // при клике на кнопку "Create" открыть модальное окно с формой для создания события
 // назначьте здесь обработчик
+
+const buttonCreate = document.querySelector('.create-event-button');
+buttonCreate.addEventListener('click', openModal());
